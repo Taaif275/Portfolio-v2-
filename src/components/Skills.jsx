@@ -32,70 +32,63 @@ const skills = [
   { name: "AI & OpenAI", icon: <SiOpenai className="text-[#9B59B6]" /> },
 ];
 
-export default function SkillsMarquee() {
-  const marqueeVariants = {
-    animate: {
-      x: [0, -2200],
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 40,
-          ease: "linear",
-        },
-      },
-    },
-  };
-
+export default function Skills() {
   return (
-    <section className="relative min-h-[75vh] bg-gradient-to-b from-white to-green-50 flex flex-col items-center justify-center px-4 sm:px-8 py-20 overflow-hidden">
-      {/* Floating glow effects */}
+    <section
+      id="skills"
+      className="relative bg-gradient-to-b from-white to-green-50 flex flex-col items-center justify-center px-6 py-24 sm:py-28 overflow-hidden"
+    >
+      {/* ✨ Title */}
       <motion.div
-        animate={{ y: [0, -20, 0] }}
-        transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
-        className="absolute w-60 sm:w-[25rem] h-60 sm:h-[25rem] bg-green-200/40 rounded-full blur-3xl top-0 left-6 sm:left-10"
-      />
-      <motion.div
-        animate={{ y: [0, 20, 0] }}
-        transition={{ repeat: Infinity, duration: 14, ease: "easeInOut" }}
-        className="absolute w-72 sm:w-[30rem] h-72 sm:h-[30rem] bg-emerald-200/40 rounded-full blur-3xl bottom-0 right-6 sm:right-10"
-      />
-
-      {/* Title */}
-      <h2 className="text-3xl sm:text-5xl font-extrabold text-green-700 mb-4 sm:mb-6 tracking-wide z-10 text-center">
-        Skills & Tools
-      </h2>
-
-      {/* Description */}
-      <p className="text-gray-600 text-sm sm:text-lg mb-10 sm:mb-16 max-w-2xl text-center z-10 leading-relaxed px-2">
-        A blend of front-end, back-end, and creative tools I use to build responsive,
-        interactive, and intelligent applications.
-      </p>
-
-      {/* Skills Marquee */}
-      <div className="relative w-full overflow-hidden z-10 py-6">
-        <motion.div
-          className="flex gap-6 sm:gap-16 whitespace-nowrap items-center"
-          variants={marqueeVariants}
-          animate="animate"
+        initial={{ opacity: 0, y: -40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="text-center mb-10 sm:mb-14"
+      >
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-green-700 mb-4 tracking-tight">
+          Skills & Tools
+        </h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-gray-600 text-sm sm:text-base max-w-md mx-auto leading-relaxed"
         >
-          {[...skills, ...skills].map((skill, index) => (
+         A curated collection of tools and technologies I use to build seamless, efficient, and engaging digital experiences.
+        </motion.p>
+      </motion.div>
+
+      {/* 🔁 Marquee */}
+      <div className="w-full overflow-hidden relative py-6 sm:py-8">
+        <motion.div
+          className="flex gap-6 sm:gap-10 w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 25,
+            ease: "linear",
+          }}
+        >
+          {[...skills, ...skills].map((skill, i) => (
             <motion.div
-              key={index}
-              whileHover={{ scale: 1.08, rotateY: 6, rotateX: 3 }}
-              transition={{ type: "spring", stiffness: 160, damping: 14 }}
-              className="flex flex-col items-center justify-center min-w-[120px] sm:min-w-[180px] 
-                         bg-white/60 backdrop-blur-lg border border-green-100 
-                         rounded-2xl p-5 sm:p-8 shadow-md hover:shadow-xl transition-all duration-300"
+              key={i}
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 200, damping: 10 }}
+              className="flex flex-col items-center justify-center bg-white border border-green-100 rounded-xl 
+                         p-4 sm:p-5 w-24 sm:w-28 shadow-sm hover:shadow-lg hover:border-green-300 transition-all duration-300"
             >
               <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 1.8, ease: "easeInOut" }}
-                className="text-5xl sm:text-7xl mb-3 sm:mb-4"
+                whileHover={{
+                  rotate: [0, -5, 5, 0],
+                  transition: { duration: 0.6 },
+                }}
+                className="text-3xl sm:text-4xl mb-2"
               >
                 {skill.icon}
               </motion.div>
-              <p className="font-semibold text-gray-800 text-sm sm:text-base tracking-wide text-center">
+              <p className="text-gray-700 text-xs sm:text-sm font-medium text-center">
                 {skill.name}
               </p>
             </motion.div>
@@ -103,13 +96,14 @@ export default function SkillsMarquee() {
         </motion.div>
       </div>
 
-      {/* Footer text */}
+      {/* 💬 Footer Quote */}
       <motion.p
-        animate={{ y: [0, -6, 0] }}
-        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-        className="mt-10 sm:mt-12 text-gray-500 italic text-xs sm:text-sm z-10 text-center"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+        className="mt-12 text-gray-500 italic text-xs sm:text-sm text-center"
       >
-        “Design, Code, and Innovate — continuously evolving.”
+        “Learning never stops — it just evolves into creation.”
       </motion.p>
     </section>
   );

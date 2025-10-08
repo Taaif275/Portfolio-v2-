@@ -5,20 +5,14 @@ import { FaComments, FaTimes } from "react-icons/fa";
 export default function ChatAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hey there 👋 I'm your AI assistant. How can I help you today?" },
+    { sender: "bot", text: "Hi, I’m Stella — Taaif’s assistant. How may I help you today?" },
   ]);
   const [input, setInput] = useState("");
-  const [step, setStep] = useState("main");
+  const [step, setStep] = useState("none"); // 👈 No options at start
   const [isTyping, setIsTyping] = useState(false);
+  const [hasUserInteracted, setHasUserInteracted] = useState(false); // 👈 Detects first message
 
-  const mainOptions = [
-    { label: "📞 Contact Boss (Taaif)", action: "contact" },
-    { label: "🚀 Start a New Project", action: "new_project" },
-    { label: "🧠 Get Career Guidance", action: "career_guidance" },
-    { label: "💡 Explore AI Ideas", action: "explore_ai" },
-  ];
-
-  const showTypingThen = (callback, delay = 800) => {
+  const showTypingThen = (callback, delay = 700) => {
     setIsTyping(true);
     setTimeout(() => {
       setIsTyping(false);
@@ -33,23 +27,23 @@ export default function ChatAssistant() {
       let response = "";
       switch (action) {
         case "contact":
-          response = "Would you like me to show Taaif’s contact info?";
+          response = "Would you like me to show Taaif’s contact information?";
           setStep("contact");
           break;
         case "new_project":
-          response = "Awesome 🚀! What type of project are you planning?";
+          response = "What kind of project are you planning to build?";
           setStep("project");
           break;
-        case "career_guidance":
-          response = "Sure! What area would you like help with?";
-          setStep("career");
+        case "learn":
+          response = "What would you like to start learning?";
+          setStep("learn");
           break;
         case "explore_ai":
-          response = "Cool! Want to see creative or productivity AI ideas?";
+          response = "Would you like AI ideas for learning or personal projects?";
           setStep("ai");
           break;
         default:
-          response = "Hmm, I didn’t quite get that.";
+          response = "I didn’t quite get that. Could you try again?";
       }
 
       setMessages((prev) => [...prev, { sender: "bot", text: response }]);
@@ -62,64 +56,43 @@ export default function ChatAssistant() {
     showTypingThen(() => {
       let responseSet = [];
 
-      if (type === "contact") {
-        if (choice === "Yes") {
-          responseSet = [
-            { sender: "bot", text: "Here’s how you can reach Taaif 👇" },
-            { sender: "bot", text: "📧 Email: taaif@example.com" },
-            { sender: "bot", text: "🔗 LinkedIn: linkedin.com/in/taaif" },
-          ];
-        }
+      if (type === "contact" && choice === "Yes") {
+        responseSet = [
+          { sender: "bot", text: "Here’s how you can reach Taaif:" },
+          { sender: "bot", text: "Email: taaif@example.com" },
+          { sender: "bot", text: "LinkedIn: linkedin.com/in/taaif" },
+        ];
       }
 
       if (type === "project") {
-        if (choice === "Web App") {
-          responseSet = [
-            { sender: "bot", text: "Nice! A web app sounds exciting. Let’s start by planning the tech stack." },
-          ];
-        } else if (choice === "AI Tool") {
-          responseSet = [
-            { sender: "bot", text: "Awesome choice! AI tools are trending. I can suggest OpenAI or TensorFlow APIs." },
-          ];
-        } else if (choice === "Creative Project") {
-          responseSet = [
-            { sender: "bot", text: "Cool! Let’s brainstorm some unique ideas with design and animation." },
-          ];
-        }
+        if (choice === "Portfolio")
+          responseSet = [{ sender: "bot", text: "A portfolio is a great project to showcase your skills." }];
+        else if (choice === "Website")
+          responseSet = [{ sender: "bot", text: "A simple website is perfect for learning the basics of React." }];
+        else if (choice === "Mini App")
+          responseSet = [{ sender: "bot", text: "A to-do list or weather app would be a solid first app." }];
       }
 
-      if (type === "career") {
-        if (choice === "Frontend") {
-          responseSet = [
-            { sender: "bot", text: "Frontend dev is fun! Focus on mastering React and animations with Framer Motion." },
-          ];
-        } else if (choice === "Backend") {
-          responseSet = [
-            { sender: "bot", text: "Backend is powerful! Try Node.js, MongoDB, and APIs for full control." },
-          ];
-        } else if (choice === "AI Development") {
-          responseSet = [
-            { sender: "bot", text: "AI Dev is the future 🤖 — explore LangChain, OpenAI API, and vector databases." },
-          ];
-        }
+      if (type === "learn") {
+        if (choice === "HTML & CSS")
+          responseSet = [{ sender: "bot", text: "Start with layouts, responsive design, and clean styling." }];
+        else if (choice === "React")
+          responseSet = [{ sender: "bot", text: "React is great — begin with components, props, and state." }];
+        else if (choice === "JavaScript")
+          responseSet = [{ sender: "bot", text: "Focus on DOM manipulation and basic algorithms first." }];
       }
 
       if (type === "ai") {
-        if (choice === "Creative") {
-          responseSet = [
-            { sender: "bot", text: "How about an AI art generator or story creator?" },
-          ];
-        } else if (choice === "Productivity") {
-          responseSet = [
-            { sender: "bot", text: "Try building an AI task planner or writing assistant!" },
-          ];
-        }
+        if (choice === "Learning")
+          responseSet = [{ sender: "bot", text: "Explore OpenAI or Hugging Face tutorials to get started." }];
+        else if (choice === "Projects")
+          responseSet = [{ sender: "bot", text: "You can try building a chatbot or text summarizer." }];
       }
 
       setMessages((prev) => [
         ...prev,
         ...responseSet,
-        { sender: "bot", text: "↩️ Tap below to go back." },
+        { sender: "bot", text: "Would you like to go back to the main options?" },
       ]);
       setStep("back");
     });
@@ -130,37 +103,44 @@ export default function ChatAssistant() {
     const userMsg = input;
     setMessages((prev) => [...prev, { sender: "user", text: userMsg }]);
     setInput("");
-    showTypingThen(() => {
-      setMessages((prev) => [
-        ...prev,
-        { sender: "bot", text: "Got it 👍 Anything else I can help with?" },
-      ]);
-    });
+
+    if (!hasUserInteracted) {
+      setHasUserInteracted(true);
+      showTypingThen(() => {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "bot", text: "Got it. Here are a few things I can help you with:" },
+        ]);
+        setStep("main"); // 👈 Show options *after* first message
+      });
+    } else {
+      showTypingThen(() => {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "bot", text: "Understood. Anything else I can help with?" },
+        ]);
+      });
+    }
   };
 
   const goBackToMain = () => {
     setStep("main");
-    setMessages((prev) => [
-      ...prev,
-      { sender: "bot", text: "Back to main options 👇" },
-    ]);
+    setMessages((prev) => [...prev, { sender: "bot", text: "Back to main options." }]);
   };
 
   return (
     <>
-      {/* Floating Chat Icon (only shows when closed) */}
       {!isOpen && (
         <motion.button
           onClick={() => setIsOpen(true)}
           className="fixed bottom-6 right-6 bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 z-50"
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           <FaComments size={20} />
         </motion.button>
       )}
 
-      {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -170,9 +150,9 @@ export default function ChatAssistant() {
             transition={{ duration: 0.3 }}
             className="fixed bottom-20 right-6 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden z-50"
           >
-            {/* ✅ Header with Close Button */}
+            {/* Header */}
             <div className="bg-green-600 text-white p-3 font-semibold text-lg flex justify-between items-center">
-              <span>AI Assistant 🤖</span>
+              <span>Stella</span>
               <button onClick={() => setIsOpen(false)} className="p-1 hover:text-gray-200">
                 <FaTimes size={18} />
               </button>
@@ -185,7 +165,7 @@ export default function ChatAssistant() {
                   key={i}
                   className={`p-3 rounded-lg text-sm ${
                     msg.sender === "bot"
-                      ? "bg-green-100 text-gray-800 self-start"
+                      ? "bg-gray-100 text-gray-800 self-start"
                       : "bg-green-600 text-white self-end ml-auto"
                   }`}
                 >
@@ -198,24 +178,21 @@ export default function ChatAssistant() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="p-3 bg-green-100 text-gray-700 rounded-lg text-sm w-fit"
+                  className="p-3 bg-gray-100 text-gray-700 rounded-lg text-sm w-fit"
                 >
-                  <motion.span
-                    animate={{ opacity: [0.3, 1, 0.3] }}
-                    transition={{ repeat: Infinity, duration: 1.2 }}
-                  >
-                    💭 ...
-                  </motion.span>
+                  ...
                 </motion.div>
               )}
 
-              {/* Options */}
-              <Options
-                step={step}
-                handleOption={handleOption}
-                handleFollowUp={handleFollowUp}
-                goBackToMain={goBackToMain}
-              />
+              {/* Options (Only after user interacts) */}
+              {hasUserInteracted && (
+                <Options
+                  step={step}
+                  handleOption={handleOption}
+                  handleFollowUp={handleFollowUp}
+                  goBackToMain={goBackToMain}
+                />
+              )}
             </div>
 
             {/* Input */}
@@ -232,7 +209,7 @@ export default function ChatAssistant() {
                 onClick={sendMessage}
                 className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-full text-sm font-medium"
               >
-                ➤
+                Send
               </button>
             </div>
           </motion.div>
@@ -242,21 +219,21 @@ export default function ChatAssistant() {
   );
 }
 
-/* ✅ Options Component */
+/* Options */
 function Options({ step, handleOption, handleFollowUp, goBackToMain }) {
   const mainOptions = [
-    { label: "📞 Contact Boss (Taaif)", action: "contact" },
-    { label: "🚀 Start a New Project", action: "new_project" },
-    { label: "🧠 Get Career Guidance", action: "career_guidance" },
-    { label: "💡 Explore AI Ideas", action: "explore_ai" },
+    { label: "Contact Taaif", action: "contact" },
+    { label: "Start a New Project", action: "new_project" },
+    { label: "Learn by Building", action: "learn" },
+    { label: "Explore AI Ideas", action: "explore_ai" },
   ];
 
   const followUps = {
-    contact: ["✅ Yes", "↩️ Back"],
-    project: ["🌐 Web App", "🤖 AI Tool", "🎨 Creative Project", "↩️ Back"],
-    career: ["🎯 Frontend", "⚙️ Backend", "🤖 AI Development", "↩️ Back"],
-    ai: ["🎨 Creative", "💼 Productivity", "↩️ Back"],
-    back: ["↩️ Back to Main"],
+    contact: ["Yes", "Back"],
+    project: ["Portfolio", "Website", "Mini App", "Back"],
+    learn: ["HTML & CSS", "React", "JavaScript", "Back"],
+    ai: ["Learning", "Projects", "Back"],
+    back: ["Back to Main"],
   };
 
   if (step === "main")
@@ -275,9 +252,7 @@ function Options({ step, handleOption, handleFollowUp, goBackToMain }) {
           <Option
             key={label}
             label={label}
-            onClick={() =>
-              label.includes("Back") ? goBackToMain() : handleFollowUp(label.replace("✅ ", ""), step)
-            }
+            onClick={() => (label.includes("Back") ? goBackToMain() : handleFollowUp(label, step))}
           />
         ))}
       </div>
@@ -286,7 +261,6 @@ function Options({ step, handleOption, handleFollowUp, goBackToMain }) {
   return null;
 }
 
-/* ✅ Option Button Component */
 function Option({ label, onClick }) {
   return (
     <motion.div

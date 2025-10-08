@@ -28,7 +28,7 @@ const helpItems = [
 export default function HowCanIHelp() {
   return (
     <section
-      id="how-i-help"
+      id="services"
       className="relative flex flex-col items-center px-4 sm:px-8 md:px-20 py-16 sm:py-24 
                  bg-gradient-to-b from-white to-green-50 overflow-hidden"
     >
@@ -40,7 +40,7 @@ export default function HowCanIHelp() {
         viewport={{ once: true }}
         className="text-3xl sm:text-5xl font-extrabold text-green-700 mb-6 sm:mb-10 tracking-wide text-center leading-snug"
       >
-        How Can I Help You?
+        What I Offer
       </motion.h2>
 
       <motion.p

@@ -12,11 +12,11 @@ const projects = [
     image: pnpImg,
     tech: ["React", "MongoDB", "Tailwind", "Node.js"],
     desc: "AI-powered meal planner that personalizes nutrition based on user health data.",
-    demo: "#",
-    github: "#",
+    demo: "https://taaif275.github.io/Nourish-Flourish/",
+    github: "https://github.com/taaif275",
   },
   {
-    title: "Cloud Kitchen Website",
+    title: "Resturant Webpage",
     image: ckImg,
     tech: ["React", "Framer Motion", "Tailwind"],
     desc: "Responsive gold-black themed website optimized for mobile users.",
@@ -29,7 +29,7 @@ const projects = [
     tech: ["React", "Framer Motion"],
     desc: "Personal portfolio showcasing projects and skills with smooth animations.",
     demo: "#",
-    github: "#",
+    github: "https://github.com/taaif275",
   },
   {
     title: "Task Tracker App",
@@ -53,7 +53,7 @@ export default function Projects() {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-white to-green-50 flex flex-col items-center px-4 sm:px-8 md:px-20 py-16 sm:py-20">
+    <section id="projects" className="min-h-screen bg-gradient-to-b from-white to-green-50 flex flex-col items-center px-4 sm:px-8 md:px-20 py-16 sm:py-20">
       {/* Title */}
       <h2 className="text-3xl sm:text-5xl font-extrabold text-green-700 mb-8 sm:mb-12 tracking-wide text-center">
         Projects

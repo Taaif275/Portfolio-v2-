@@ -62,7 +62,7 @@ const roadmapData = [
 
 export default function Roadmap() {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-white to-green-50 flex flex-col items-center px-4 sm:px-8 md:px-20 py-20">
+    <section id = "roadmap"className="min-h-screen bg-gradient-to-b from-white to-green-50 flex flex-col items-center px-4 sm:px-8 md:px-20 py-20">
       {/* Header */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
@@ -70,7 +70,7 @@ export default function Roadmap() {
         transition={{ duration: 0.6 }}
         className="text-3xl sm:text-5xl font-extrabold text-green-700 mb-8 tracking-wide text-center"
       >
-        My Project Roadmap
+        Roadmap
       </motion.h2>
 
       <p className="max-w-2xl text-center text-gray-600 mb-16 text-sm sm:text-lg">

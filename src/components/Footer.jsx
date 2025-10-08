@@ -19,28 +19,44 @@ export default function Footer() {
   transition={{ duration: 0.6 }}
   className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent [background-clip:text] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]"
 >
-  Thank You
+  Thanks For Visiting
 </motion.h2>
 
         {/* Navigation Links */}
-        <motion.ul
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-6 sm:gap-10 text-base sm:text-lg font-medium"
-        >
-          {["Home", "About", "Projects", "Skills", "Contact"].map((item) => (
-            <li key={item} className="relative group">
-              <a
-                href={`#${item.toLowerCase()}`}
-                className="transition duration-200 group-hover:text-green-400"
-              >
-                {item}
-              </a>
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-green-400 transition-all group-hover:w-full"></span>
-            </li>
-          ))}
-        </motion.ul>
+<motion.ul
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ delay: 0.2 }}
+  className="flex flex-wrap justify-center gap-6 sm:gap-10 text-base sm:text-lg font-medium"
+>
+  {["Home", "About", "Projects", "Skills", "Services"].map((item) => (
+    <li key={item} className="relative group">
+      <button
+        onClick={() => {
+          const id = item.toLowerCase();
+          const section = document.getElementById(id);
+          if (section) {
+            const navbar = document.querySelector("[data-navbar]");
+            const offset = navbar ? navbar.offsetHeight : 0;
+
+            const y =
+              section.getBoundingClientRect().top + window.scrollY - offset;
+
+            window.scrollTo({
+              top: y,
+              behavior: "smooth",
+            });
+          }
+        }}
+        className="transition duration-200 group-hover:text-green-400 focus:outline-none"
+      >
+        {item}
+      </button>
+      <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-green-400 transition-all group-hover:w-full"></span>
+    </li>
+  ))}
+</motion.ul>
+
 
         {/* Divider */}
         <div className="w-20 sm:w-24 h-[2px] bg-green-400/70 rounded-full"></div>
