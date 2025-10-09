@@ -9,9 +9,9 @@ import {
   FaLightbulb,
   FaUsers,
 } from "react-icons/fa";
-import logo from "../assets/logo.jpg";
 
 function Hero() {
+  // 👇 Smooth scroll function
   const scrollToSection = (id) => {
     const element = document.querySelector(id);
     if (element) {
@@ -33,24 +33,8 @@ function Hero() {
       id="home"
       className="min-h-screen flex flex-col bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-gray-100 relative overflow-hidden"
     >
-      {/* Navbar */}
-      <motion.nav
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full flex justify-between items-center px-4 sm:px-8 py-3 sm:py-4 absolute top-0 left-0"
-      >
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden shadow-md flex items-center justify-center"
-        >
-          <img src={logo} alt="Logo" className="w-full h-full object-cover" />
-        </motion.div>
-      </motion.nav>
-
       {/* Hero Content */}
-      <div className="flex flex-col justify-center items-center min-h-screen px-4 pt-20 sm:pt-0 text-center">
+      <div className="flex flex-col justify-start items-center min-h-screen px-4 pt-12 sm:pt-20 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -150,7 +134,7 @@ function Hero() {
           initial="hidden"
           animate="visible"
           custom={1.2}
-          className="mt-10 sm:mt-16 text-center max-w-3xl w-full px-3"
+          className="mt-10 sm:mt-14 text-center max-w-3xl w-full px-3"
         >
           <h2 className="text-xl sm:text-3xl font-semibold text-green-400 mb-4">
             Highlights
@@ -198,7 +182,7 @@ function Hero() {
 
         {/* Scroll Arrow */}
         <motion.div
-          initial={{y: 20 }}
+          initial={{ y: 20 }}
           animate={{
             opacity: 1,
             y: [0, 10, 0],
@@ -208,8 +192,14 @@ function Hero() {
               ease: "easeInOut",
             },
           }}
+          whileHover={{
+            scale: 1.2,
+            color: "#86efac",
+            transition: { duration: 0.3 },
+          }}
           className="mt-10 sm:mt-14 flex justify-center cursor-pointer pb-8 sm:pb-10"
-          onClick={() => scrollToSection("#contact")}
+          // 👇 Change this ID to whatever section you want to scroll to
+          onClick={() => scrollToSection("#about")}
         >
           <FaChevronDown className="text-green-400 text-3xl sm:text-4xl hover:text-green-300 transition" />
         </motion.div>
