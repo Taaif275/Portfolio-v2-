@@ -15,13 +15,12 @@ import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
-    // 👇 this ensures the router works in /Portfolio-v2-/ subpath
+    
     <Router basename="/Portfolio-v2-/">
-      {/* 👇 this ensures every new page starts at the top */}
+      
       <ScrollToTop />
 
       <Routes>
-        {/* Home Page */}
         <Route
           path="/"
           element={
@@ -37,8 +36,6 @@ function App() {
             </>
           }
         />
-
-        {/* Read More Page */}
         <Route path="/readmore" element={<ReadMore />} />
       </Routes>
     </Router>

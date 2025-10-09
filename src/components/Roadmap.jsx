@@ -30,7 +30,7 @@ const roadmapData = [
     icon: <FaCompass className="text-blue-500 text-3xl sm:text-4xl" />,
     desc: "Next, I’ll explore projects that merge AI automation and user-centric design for advanced productivity tools.",
     items: [
-      "Add an AI chatbot nutrition coach (like a “food assistant”) that answers user queries.",
+      "Implement real-time data syncing across multiple devices.",
       "AI-powered Blogging Platform.",
       "Personal API Service (Next.js + MongoDB).",
     ],
@@ -53,7 +53,7 @@ const roadmapData = [
     desc: "Long-term goal: building intelligent, scalable ecosystems that connect creativity, automation, and personalized digital experiences.",
     items: [
       "Fully autonomous portfolio management platform.",
-      "Looking ahead to creating meaningful, scalable, and well-crafted digital products that leave a lasting impact.",
+      "Creating meaningful, scalable, and well-crafted digital products that leave a lasting impact.",
       "Building better, smarter, and more creative digital experiences ahead.",
     ],
     color: "from-purple-50 to-white border-purple-200",
@@ -62,8 +62,10 @@ const roadmapData = [
 
 export default function Roadmap() {
   return (
-    <section id = "roadmap"className="min-h-screen bg-gradient-to-b from-white to-green-50 flex flex-col items-center px-4 sm:px-8 md:px-20 py-20">
-      {/* Header */}
+    <section
+      id="roadmap"
+      className="min-h-screen bg-gradient-to-b from-white to-green-50 flex flex-col items-center px-4 sm:px-8 md:px-20 py-20"
+    >
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -113,12 +115,9 @@ export default function Roadmap() {
                 <p className="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed">
                   {phase.desc}
                 </p>
-                <ul className="space-y-2 text-gray-700 text-sm sm:text-base">
+                <ul className="space-y-2 text-gray-700 text-sm sm:text-base list-disc list-inside">
                   {phase.items.map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-2 before:content-['•'] before:text-green-500 before:mt-1"
-                    >
+                    <li key={i} className="leading-snug">
                       {item}
                     </li>
                   ))}

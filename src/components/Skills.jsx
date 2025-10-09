@@ -38,7 +38,6 @@ export default function Skills() {
       id="skills"
       className="relative bg-gradient-to-b from-white to-green-50 flex flex-col items-center justify-center px-6 py-24 sm:py-28 overflow-hidden"
     >
-      {/* ✨ Title */}
       <motion.div
         initial={{ opacity: 0, y: -40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -96,7 +95,6 @@ export default function Skills() {
         </motion.div>
       </div>
 
-      {/* 💬 Footer Quote */}
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}

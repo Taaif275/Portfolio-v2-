@@ -5,12 +5,12 @@ import { FaComments, FaTimes } from "react-icons/fa";
 export default function ChatAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hi, I’m Stella — Taaif’s assistant. How may I help you today?" },
+    { sender: "bot", text: "Hi, I’m Stella. How may I help you today?" },
   ]);
   const [input, setInput] = useState("");
-  const [step, setStep] = useState("none"); // 👈 No options at start
+  const [step, setStep] = useState("none");
   const [isTyping, setIsTyping] = useState(false);
-  const [hasUserInteracted, setHasUserInteracted] = useState(false); // 👈 Detects first message
+  const [hasUserInteracted, setHasUserInteracted] = useState(false);
 
   const showTypingThen = (callback, delay = 700) => {
     setIsTyping(true);
@@ -34,8 +34,8 @@ export default function ChatAssistant() {
           response = "What kind of project are you planning to build?";
           setStep("project");
           break;
-        case "learn":
-          response = "What would you like to start learning?";
+        case "learn": // replaced logic for "Explore My Projects"
+          response = "Here are some of Taaif’s featured projects you can explore:";
           setStep("learn");
           break;
         case "explore_ai":
@@ -59,8 +59,8 @@ export default function ChatAssistant() {
       if (type === "contact" && choice === "Yes") {
         responseSet = [
           { sender: "bot", text: "Here’s how you can reach Taaif:" },
-          { sender: "bot", text: "Email: taaif@example.com" },
-          { sender: "bot", text: "LinkedIn: linkedin.com/in/taaif" },
+          { sender: "bot", text: "Email: eesawtaaif275.p@gmail.com" },
+          { sender: "bot", text: "LinkedIn: //www.linkedin.com/in/eesaw-taaif-tm-a398ab280/" },
         ];
       }
 
@@ -74,12 +74,12 @@ export default function ChatAssistant() {
       }
 
       if (type === "learn") {
-        if (choice === "HTML & CSS")
-          responseSet = [{ sender: "bot", text: "Start with layouts, responsive design, and clean styling." }];
-        else if (choice === "React")
-          responseSet = [{ sender: "bot", text: "React is great — begin with components, props, and state." }];
-        else if (choice === "JavaScript")
-          responseSet = [{ sender: "bot", text: "Focus on DOM manipulation and basic algorithms first." }];
+        if (choice === "Portfolio Website")
+          responseSet = [{ sender: "bot", text: "A clean and animated portfolio built with React and Framer Motion." }];
+        else if (choice === "Restaurant Site")
+          responseSet = [{ sender: "bot", text: "A stylish, responsive restaurant page with Tailwind and smooth motion." }];
+        else if (choice === "Task Manager")
+          responseSet = [{ sender: "bot", text: "An upcoming productivity app to organize your daily workflow." }];
       }
 
       if (type === "ai") {
@@ -109,9 +109,9 @@ export default function ChatAssistant() {
       showTypingThen(() => {
         setMessages((prev) => [
           ...prev,
-          { sender: "bot", text: "Got it. Here are a few things I can help you with:" },
+          { sender: "bot", text: "Hi there. Here are a few things I can help you with:" },
         ]);
-        setStep("main"); // 👈 Show options *after* first message
+        setStep("main");
       });
     } else {
       showTypingThen(() => {
@@ -184,7 +184,7 @@ export default function ChatAssistant() {
                 </motion.div>
               )}
 
-              {/* Options (Only after user interacts) */}
+              {/* Options */}
               {hasUserInteracted && (
                 <Options
                   step={step}
@@ -224,14 +224,14 @@ function Options({ step, handleOption, handleFollowUp, goBackToMain }) {
   const mainOptions = [
     { label: "Contact Taaif", action: "contact" },
     { label: "Start a New Project", action: "new_project" },
-    { label: "Learn by Building", action: "learn" },
+    { label: "Explore My Projects", action: "learn" }, // ✅ Updated option
     { label: "Explore AI Ideas", action: "explore_ai" },
   ];
 
   const followUps = {
     contact: ["Yes", "Back"],
     project: ["Portfolio", "Website", "Mini App", "Back"],
-    learn: ["HTML & CSS", "React", "JavaScript", "Back"],
+    learn: ["Portfolio Website", "Restaurant Site", "Task Manager", "Back"], // ✅ Updated follow-ups
     ai: ["Learning", "Projects", "Back"],
     back: ["Back to Main"],
   };
