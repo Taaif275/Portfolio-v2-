@@ -94,11 +94,6 @@ export default function Roadmap() {
                 !isLeft ? "md:flex-row-reverse" : ""
               }`}
             >
-              {/* Connector line */}
-              {index !== roadmapData.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 left-1/2 w-px h-full bg-green-200 -translate-x-1/2" />
-              )}
-
               {/* Icon */}
               <div className="z-10 bg-white p-4 rounded-full shadow-md border-2 border-green-200 flex-shrink-0">
                 {phase.icon}
