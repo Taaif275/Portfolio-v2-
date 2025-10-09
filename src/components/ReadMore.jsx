@@ -57,7 +57,7 @@ export default function ReadMore() {
                 Higher Secondary Education
               </h3>
               <p className="text-gray-700 text-sm sm:text-base">
-                K H Matric Boys Higher Sec School (2019–2021)
+                K H Matric Boys Higher Sec School (2020–2022)
               </p>
               <p className="text-gray-600 text-xs sm:text-sm italic">
                 Majored in Commerce.
@@ -68,7 +68,7 @@ export default function ReadMore() {
                 Secondary School Education
               </h3>
               <p className="text-gray-700 text-sm sm:text-base">
-                K H Matric Boys Higher Sec School (2018–2019)
+                K H Matric Boys Higher Sec School (2018–2020)
               </p>
               <p className="text-gray-600 text-xs sm:text-sm italic">
                 Completed with Distinction.
