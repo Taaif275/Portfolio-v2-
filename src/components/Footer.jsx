@@ -7,22 +7,21 @@ export default function Footer() {
 
   return (
     <footer className="bg-slate-800 text-gray-100 py-20 relative overflow-hidden">
-      {/* Gradient Overlay */}
+      
       <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-800 to-slate-900 opacity-95" />
 
-      {/* Main Content */}
+      
       <div className="relative max-w-6xl mx-auto px-4 sm:px-8 flex flex-col items-center gap-12 z-10 text-center">
-        {/* Heading */}
-        <motion.h2
+   <motion.h2
   initial={{ opacity: 0, y: 20 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
-  className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent [background-clip:text] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]"
+  className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent [background-clip:text] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] pb-2"
 >
   Thanks For Visiting
 </motion.h2>
 
-        {/* Navigation Links */}
+       
 <motion.ul
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
