@@ -112,7 +112,7 @@ export default function ReadMore() {
             My journey as a developer has been hands-on and self-driven. I’ve
             learned most of my technical and creative skills by{" "}
             <span className="text-green-700 font-semibold">building projects</span>{" "}
-            — from personal websites and interactive UI components to complete
+             from personal websites and interactive UI components to complete
             front-end applications. Every project sharpened my understanding of
             problem-solving, design thinking, and creating smooth, responsive
             user experiences.
@@ -129,7 +129,7 @@ export default function ReadMore() {
             <li>Listening to music while coding.</li>
             <li>Exploring AI tools and automating workflows.</li>
             <li>Watching tech talks and learning from dev communities.</li>
-            <li>Gaming — and dreaming to build one someday.</li>
+            <li>Gaming and dreaming to build one someday.</li>
           </ul>
         </div>
 

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   FaGithub,
   FaLinkedin,
-  FaEnvelope,
+  FaInstagram,
   FaChevronDown,
   FaLaptopCode,
   FaLightbulb,
@@ -71,7 +71,7 @@ function Hero() {
             custom={0.6}
             className="text-sm sm:text-lg text-gray-200 mb-6"
           >
-            Frontend Developer | Tech Enthusiast
+            Tech Enthusiast | Explorer
           </motion.p>
 
           {/* Resume Button */}
@@ -108,7 +108,7 @@ function Hero() {
                 href: "https://www.linkedin.com/in/eesaw-taaif-tm-a398ab280/",
                 icon: <FaLinkedin />,
               },
-              { href: "mailto:eesawtaaif275.p@gmail.com", icon: <FaEnvelope /> },
+              { href: "https://instagram.com/...", icon: <FaInstagram /> },
             ].map(({ href, icon }, i) => (
               <motion.a
                 key={i}
@@ -198,7 +198,7 @@ function Hero() {
             transition: { duration: 0.3 },
           }}
           className="mt-10 sm:mt-14 flex justify-center cursor-pointer pb-8 sm:pb-10"
-          // 👇 Change this ID to whatever section you want to scroll to
+
           onClick={() => scrollToSection("#about")}
         >
           <FaChevronDown className="text-green-400 text-3xl sm:text-4xl hover:text-green-300 transition" />

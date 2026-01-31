@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
@@ -11,13 +12,9 @@ import Footer from "./components/Footer";
 import ReadMore from "./components/ReadMore";
 import ScrollToTop from "./components/ScrollToTop";
 
-
-
 function App() {
   return (
-    
-    <Router basename="/Portfolio-v2-/">
-      
+    <Router>
       <ScrollToTop />
 
       <Routes>
@@ -36,6 +33,7 @@ function App() {
             </>
           }
         />
+
         <Route path="/readmore" element={<ReadMore />} />
       </Routes>
     </Router>
@@ -43,4 +41,3 @@ function App() {
 }
 
 export default App;
-

@@ -101,7 +101,7 @@ export default function Skills() {
         transition={{ delay: 0.4, duration: 0.6 }}
         className="mt-12 text-gray-500 italic text-xs sm:text-sm text-center"
       >
-        “Learning never stops — it just evolves into creation.”
+        “Learning never stops it just evolves into creation.”
       </motion.p>
     </section>
   );

@@ -26,7 +26,7 @@ export default function About() {
 
           <p className="text-gray-700 text-base sm:text-lg mb-4 leading-relaxed">
             I specialize in{" "}
-            <strong className="text-green-700">React, JavaScript, and Tailwind CSS</strong> — 
+            <strong className="text-green-700">React, JavaScript, and Tailwind CSS</strong>  
             turning ideas into visually appealing, accessible interfaces.
           </p>
 

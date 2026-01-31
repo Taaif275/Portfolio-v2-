@@ -4,7 +4,8 @@ import pnpImg from "../assets/pnp.jpg";
 import prImg from "../assets/pr.jpg";
 import ckImg from "../assets/ck.jpg";
 import wrImg from "../assets/wr.avif";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import ste from "../assets/ste.png";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const projects = [
   {
@@ -13,7 +14,6 @@ const projects = [
     tech: ["React", "MongoDB", "Tailwind", "Node.js"],
     desc: "A smart nutrition planner that customizes meal plans based on user preferences and goals.",
     demo: "https://taaif275.github.io/Nourish-Flourish/",
-    github: "https://github.com/taaif275",
   },
   {
     title: "Restaurant Webpage",
@@ -21,7 +21,6 @@ const projects = [
     tech: ["React", "Framer Motion", "Tailwind"],
     desc: "A responsive restaurant website built to highlight dishes, ambiance, and easy online access.",
     demo: "",
-    github: "https://github.com/taaif275",
   },
   {
     title: "Portfolio V2",
@@ -29,15 +28,13 @@ const projects = [
     tech: ["React", "Framer Motion"],
     desc: "Personal portfolio showcasing projects and skills with smooth animations.",
     demo: "#",
-    github: "https://github.com/taaif275",
   },
   {
-    title: "Steloros",
-    image: wrImg,
-    tech: ["React", "LocalStorage", "Tailwind"],
-    desc: "Work in progress",
-    demo: "#",
-    github: "#",
+    title: "Stelores",
+    image: ste,
+    tech: ["React", "Typescript", "Tailwind"],
+    desc: "Built a modern, responsive website for Stelores to present its digital marketing services and brand identity.",
+    demo: "https://stelores.com/#/",
   },
   {
     title: "Crypto Tracker",
@@ -45,7 +42,6 @@ const projects = [
     tech: ["React", "API", "Chart.js"],
     desc: "Work in progress",
     demo: "#",
-    github: "#",
   },
 ];
 
@@ -86,11 +82,12 @@ export default function Projects() {
               }}
               className="bg-white w-full max-w-[420px] border-2 border-green-100 shadow-sm flex flex-col transition-all duration-300"
             >
+              {/* Image */}
               <div className="w-full h-60 sm:h-72 bg-white p-2 flex items-center justify-center">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-contain border border-green-100 rounded-none"
+                  className="w-full h-full object-contain border border-green-100"
                 />
               </div>
 
@@ -100,6 +97,7 @@ export default function Projects() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">
                     {project.title}
                   </h3>
+
                   <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                     {project.desc}
                   </p>
@@ -116,8 +114,8 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Links */}
-                <div className="flex items-center justify-between border-t border-green-100 pt-3 mt-auto">
+                {/* Demo Only */}
+                <div className="flex items-center border-t border-green-100 pt-3 mt-auto">
                   {project.demo ? (
                     <a
                       href={project.demo}
@@ -128,19 +126,10 @@ export default function Projects() {
                       <FaExternalLinkAlt /> Demo
                     </a>
                   ) : (
-                    <span className="flex items-center gap-2 text-gray-400 italic text-sm cursor-not-allowed">
+                    <span className="flex items-center gap-2 text-gray-400 italic text-sm">
                       <FaExternalLinkAlt /> Demo (coming soon)
                     </span>
                   )}
-
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-700 font-semibold text-sm"
-                  >
-                    <FaGithub /> Code
-                  </a>
                 </div>
               </div>
             </motion.div>
@@ -148,7 +137,7 @@ export default function Projects() {
         </AnimatePresence>
       </motion.div>
 
-      {/* View More / Less Button */}
+      {/* View More / Less */}
       <motion.button
         onClick={() => setShowAll(!showAll)}
         whileHover={{

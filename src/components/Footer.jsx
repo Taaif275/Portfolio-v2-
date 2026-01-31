@@ -68,7 +68,7 @@ export default function Footer() {
           className="max-w-md text-center"
         >
           <p className="text-base sm:text-lg text-gray-300 mb-6">
-            You’ve reached the end — but it doesn’t have to stop here.
+            You’ve reached the end  but it doesn’t have to stop here.
           </p>
 
           {/* Social Icons */}
@@ -101,7 +101,7 @@ export default function Footer() {
           className="text-xs sm:text-sm text-gray-400 mt-8 leading-relaxed"
         >
           © {new Date().getFullYear()}{" "}
-          <span className="text-green-400 font-semibold">T M Eesaw Taaif</span> —{" "}
+          <span className="text-green-400 font-semibold">T M Eesaw Taaif</span> {" "}
           Built with passion and precision
         </motion.p>
 
