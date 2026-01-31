@@ -108,7 +108,7 @@ function Hero() {
                 href: "https://www.linkedin.com/in/eesaw-taaif-tm-a398ab280/",
                 icon: <FaLinkedin />,
               },
-              { href: "https://instagram.com/...", icon: <FaInstagram /> },
+              { href: "https://www.instagram.com/taaifeesaw/", icon: <FaInstagram /> },
             ].map(({ href, icon }, i) => (
               <motion.a
                 key={i}
